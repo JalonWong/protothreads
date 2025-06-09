@@ -1,0 +1,4 @@
+common --spawn_strategy=local
+common --verbose_failures
+test --test_output=all
+build:windows --cxxopt=/std:c++17 --host_cxxopt=/std:c++17

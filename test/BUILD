@@ -2,6 +2,7 @@ cc_test(
     name = "unit_test",
     srcs = glob([
         "*.cc",
+        "*.hh",
     ]),
     copts = select({
         "//:msvc": ["/utf-8"],

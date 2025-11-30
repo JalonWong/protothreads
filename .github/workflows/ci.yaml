@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main2
+
+jobs:
+  ci:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        include:
+          - os: ubuntu-latest
+            goos: linux
+          - os: windows-latest
+            goos: windows
+          - os: macos-latest
+            goos: darwin
+
+    steps:
+      - uses: actions/checkout@main
+      - name: ENV
+        run: bazel --version
+      - name: Build
+        run: bazel build //example:examples
+      - name: Test on Windows
+        if: matrix.goos == 'windows'
+        run: bazel test --config=msvc //test:unit_test
+      - name: Test
+        if: matrix.goos != 'windows'
+        run: bazel test //test:unit_test

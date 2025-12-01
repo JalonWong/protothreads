@@ -4,3 +4,4 @@
 /bazel-*
 /*.bazel.lock
 /*.tar.*
+/.mypy_cache

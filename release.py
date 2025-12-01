@@ -8,15 +8,12 @@ PYTHON = sys.executable
 
 if __name__ == "__main__":
     tag = sys.argv[1]
-    if "v" in tag:
-        print(f"Tag: {tag}")
-        exit(1)
 
     subprocess.run([PYTHON, "--version"])
 
     with open("MODULE.bazel", "r") as f:
         text = f.read()
-        text = text.replace("0.0.0", tag)
+        text = text.replace("0.0.0", tag.replace("v", ""))
         with open("MODULE.bazel", "w") as f:
             f.write(text)
 
@@ -25,6 +22,6 @@ if __name__ == "__main__":
         tar.add("BUILD")
         tar.add("MODULE.bazel")
 
-        files = glob("src/**", recursive=True) + glob("test/**", recursive=True) + glob("example/**", recursive=True)
+        files = glob("src/**", recursive=True) + glob("test/**", recursive=True)
         for file in files:
             tar.add(file)

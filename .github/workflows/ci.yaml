@@ -12,13 +12,6 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        include:
-          - os: ubuntu-latest
-            goos: linux
-          - os: windows-latest
-            goos: windows
-          - os: macos-latest
-            goos: darwin
 
     steps:
       - uses: actions/checkout@main
@@ -27,8 +20,8 @@ jobs:
       - name: Build
         run: bazel build //example:examples
       - name: Test on Windows
-        if: matrix.goos == 'windows'
+        if: matrix.os == 'windows-latest'
         run: bazel test --config=msvc //test:unit_test
       - name: Test
-        if: matrix.goos != 'windows'
+        if: matrix.os != 'windows-latest'
         run: bazel test //test:unit_test

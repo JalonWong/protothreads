@@ -5,10 +5,11 @@ bcr_test_module:
     - debian10
     - ubuntu2204
     - macos
+    - windows
   tasks:
     run_test_module:
       name: Run test module
       platform: ${{ platform }}
-      bazel: [8.x]
+      bazel: 8.x
       build_targets:
-      - '//test:unit_test'
+      - '//:pt'

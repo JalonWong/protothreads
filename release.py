@@ -21,6 +21,6 @@ if __name__ == "__main__":
         tar.add("BUILD")
         tar.add("MODULE.bazel")
 
-        files = glob("src/**", recursive=True) + glob("test/**", recursive=True)
+        files = glob("src/**", recursive=True)
         for file in files:
             tar.add(file)

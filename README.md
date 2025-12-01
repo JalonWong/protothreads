@@ -7,6 +7,7 @@ The source code comes from [Adam Dunkels' Protothreads](https://dunkels.com/adam
 ```py
 bazel_dep(name = "protothreads", version = "<version>")
 ```
+See [Releases](https://github.com/JalonWong/protothreads/releases)
 
 `BUILD`
 ```py
@@ -36,7 +37,7 @@ int main() {
     return 0;
 }
 ```
-See also `example/`.
+See also [example](example).
 
 ### Optional
 Uses the C `switch()` statement to resume execution of a function

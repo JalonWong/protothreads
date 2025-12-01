@@ -5,12 +5,7 @@ The source code comes from [Adam Dunkels' Protothreads](https://dunkels.com/adam
 ## Getting Started
 `MODULE.bazel`
 ```py
-bazel_dep(name = "protothreads")
-git_override(
-    module_name="protothreads",
-    remote="https://github.com/JalonWong/protothreads.git",
-    branch="main",
-)
+bazel_dep(name = "protothreads", version = "<version>")
 ```
 
 `BUILD`

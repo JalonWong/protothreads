@@ -2,14 +2,20 @@ name: Release
 
 on:
   push:
-    tags: ['v*']
+    tags: ['*']
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python release.py ${{ github.ref_name }}
       - uses: softprops/action-gh-release@v2
+        with:
+          files: protothreads*.tar.gz
 
   publish:  # Calls after release
     needs: release

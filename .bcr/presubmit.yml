@@ -1,17 +1,5 @@
-matrix:
-  platform:
-  - debian10
-  - ubuntu2204
-  - macos
-  - windows
-tasks:
-  verify_targets:
-    name: Verify build targets
-    platform: ${{ platform }}
-    bazel: [8.x]
-    build_targets:
-    - '//example:examples'
 bcr_test_module:
+  module_path: ''
   matrix:
     platform:
     - debian10

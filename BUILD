@@ -13,6 +13,7 @@ cc_library(
     hdrs = glob(["src/pt/*.h"]),
     defines = select({
         ":use_switch": ["PT_LC_USE_SWITCH"],
+        ":msvc": ["PT_LC_USE_SWITCH"],
         "//conditions:default": [],
     }),
     includes = [

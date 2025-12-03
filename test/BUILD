@@ -8,10 +8,6 @@ cc_test(
         "//:msvc": ["/utf-8"],
         "//conditions:default": [],
     }),
-    defines = select({
-        "//:msvc": ["PT_LC_USE_SWITCH"],
-        "//conditions:default": [],
-    }),
     includes = [
         ".",
     ],

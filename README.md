@@ -50,5 +50,6 @@ bazel build --define=pt_option=lc_switch app
 bazel build //example:examples
 bazel test //test:unit_test
 # For MSVC
+bazel build --config=msvc //example:examples
 bazel test --config=msvc //test:unit_test
 ```

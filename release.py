@@ -13,12 +13,10 @@ bazel_dep(name = "protothreads", version = "{version}")
 if __name__ == "__main__":
     tag = sys.argv[1]
 
-    with open("MODULE.bazel", "r") as f:
-        v = tag.replace("v", "")
-        print(TAMPLATE.format(version=v))
-        text = f.read().replace("0.0.0", v)
-        with open("MODULE.bazel", "w") as f:
-            f.write(text)
+    v = tag.replace("v", "")
+    print(TAMPLATE.format(version=v))
+    with open("MODULE.bazel", "w") as f:
+        f.write(f'module(name = "protothreads", version = "{v}", compatibility_level = 1)\n\n')
 
     with tarfile.open(f"protothreads-{tag}.tar.gz", "w:gz") as tar:
         tar.add(".bazelrc")

@@ -15,8 +15,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
-      - name: ENV
-        run: bazel --version
+      - uses: bazel-contrib/setup-bazel@0.15.0
+        with:
+          bazelisk-cache: true
+          disk-cache: ${{ runner.os }}-${{ github.workflow }}
+          repository-cache: true
+      - run: bazel --version
       - name: Build
         run: bazel build //example:examples
       - name: Test on Windows
